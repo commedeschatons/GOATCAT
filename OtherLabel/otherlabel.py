@@ -21,45 +21,6 @@ WAYBILL_W = 57.15*2 * SC
 
 styles = getSampleStyleSheet()
 
-def createBlankWayBill():
-	wb = canvas.Canvas(WAYBILL_FILENAME, pagesize=(WAYBILL_W, WAYBILL_H))
-
-	#drawline
-
-
-	add = """Dimitri James3336 Hamilton\n71\nWest Lafayette\nIN\n47906 US"""
-	wb.drawString(2.5*SC, 90*SC, add)
-
-	#bifi logo
-	wb.drawImage('thermal.png', 80*SC, 2.5*SC, 1082*0.175, 164*0.175)
-
-
-	wb.setLineWidth(0.5)
-
-	wb.line(0*SC, SC*40, 77.5*SC,SC*40 )
-	wb.line(77.5*SC, SC*40, 77.5*SC , SC*0)
-	wb.line(77.5*SC, 15.5*SC, 150*SC, 15.5*SC)
-	print wb.getAvailableFonts()
-	#draw address
-
-	 #country
-
-	#random strings
-	wb.setFont('Courier', 7.5)
-	canvas.Canvas.drawString(wb, SC*135, SC*0, VERSION)
-	wb.setFont('Helvetica-Bold', 20)
-	#draw pdf417
-	wb.drawImage('data.png', SC*2.5,SC*2.5) # test
-	# draw linecode
-
-	#draw logo
-
-	#draw carrier logo
-	return wb
-
-
-#test
-createBlankWayBill().save()
 
 ########################################################################
 class Test(object):
@@ -98,12 +59,6 @@ class Test(object):
         """
         self.c = canvas
         normal = self.styles["Normal"]
-
-        header_text = "<b>This is a test header</b>"
-        p = Paragraph(header_text, normal)
-        p.wrapOn(self.c, self.width, self.height)
-        p.drawOn(self.c, *self.coord(1, 12, mm))
-
         ptext = "<b>Type: </b> 5C LCD Ori <br/> <b>Color: </b> Black <br/><b>Qty: </b> 1 pc"
 
         p = Paragraph(ptext, style=normal)
