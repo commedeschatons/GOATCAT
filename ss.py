@@ -58,7 +58,7 @@ for order in orderqueue['orders']:
 
 
  print useful
- data = elaphe.barcode('pdf417', zlib.compress(useful,9), options=dict(columns=8, rows=4))
+ data = elaphe.barcode('aztec', zlib.compress(useful,9), options=dict(columns=8, rows=4))
  print type(data)
  data.save("data.png", "PNG")
  data.show()
