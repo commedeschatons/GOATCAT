@@ -20,7 +20,7 @@ reportlab.rl_config.warnOnMissingFontGlyphs = 0
 
 
 #----------------------------------------------------------------------
-def main():
+def cat():
 
  """
  Create barcode examples and embed in a PDF
@@ -65,8 +65,4 @@ def main():
  c.save()
 
 if __name__ == "__main__":
-    main()
-
-
- c.save()
- #asdfasdfasdfasfas
+    cat()
