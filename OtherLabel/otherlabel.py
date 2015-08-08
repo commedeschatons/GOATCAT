@@ -1,38 +1,15 @@
 __author__ = 'Steven'
-from reportlab.lib.units import mm, cm
-from reportlab.pdfgen import canvas
-from elaphe import barcode
-from reportlab.graphics import renderPDF
-from reportlab.platypus import Paragraph
-from reportlab.lib.utils import ImageReader
+
 from reportlab.lib.styles import getSampleStyleSheet
-from reportlab.lib.pagesizes import letter
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle, TA_CENTER
+from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import inch, mm
-from reportlab.pdfgen import canvas
-from reportlab.platypus import Paragraph, Table, SimpleDocTemplate, Spacer
-import json
+from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
 from urllib2 import Request, urlopen
 import json
-import base64
-from pprint import pprint
 import elaphe
 import zlib
 
-import os
-from reportlab.graphics.barcode import eanbc, qr, usps
-from reportlab.graphics.shapes import Drawing
-from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen.canvas import Canvas
-from reportlab.graphics import renderPDF
-from reportlab.lib.utils import ImageReader
-from reportlab.pdfbase.pdfmetrics import registerFontFamily,  EmbeddedType1Face
-from elaphe import barcode
-from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.lib.fonts import addMapping
-from PIL import Image, ImageFont, ImageDraw
 
-from PIL import Image
 VERSION = "bxcc0.11"
 WAYBILL_FILENAME = 'bxwaybill.pdf' #required for canvas objest
 SC = 1*mm
@@ -40,6 +17,36 @@ WAYBILL_H = 31.75*2 * SC
 WAYBILL_W = 57.15*2 * SC
 
 styles = getSampleStyleSheet()
+
+def stylesheet():
+    styles= {
+        'default': ParagraphStyle(
+            'default',
+            fontName='Helvetica',
+            fontSize=18,
+            leading=22,
+            leftIndent=0,
+            rightIndent=0,
+            firstLineIndent=0,
+            spaceBefore=5,
+            spaceAfter=5,
+            bulletFontName='Times-Roman',
+            bulletFontSize=10,
+            bulletIndent=0,
+            backColor=None,
+            wordWrap=None,
+            borderWidth= 0,
+            borderPadding= 0,
+            borderColor= None,
+            borderRadius= None,
+            allowWidows= 1,
+            allowOrphans= 0,
+            textTransform=None,  # 'uppercase' | 'lowercase' | None
+            endDots=None,
+            splitLongWords=1,
+        ),
+    }
+    return styles
 
 #get info from shipstation and make data.png
 headers = {
@@ -58,9 +65,7 @@ for order in orderqueue['orders']:
 print useful
 data = elaphe.barcode('aztec', zlib.compress(useful,9), options=dict(columns=8, rows=4))
 print type(data)
-data.save("data.png", "PNG")
-data.show()
-
+data.save("data1.png", "PNG")
 
 ########################################################################
 class Test(object):
@@ -70,7 +75,7 @@ class Test(object):
     def __init__(self):
         """Constructor"""
         self.width, self.height = (WAYBILL_W, WAYBILL_H)
-        self.styles = getSampleStyleSheet()
+        self.styles = stylesheet()
 
     #----------------------------------------------------------------------
     def coord(self, x, y, unit=1):
@@ -98,21 +103,20 @@ class Test(object):
         Create the document
         """
         self.c = canvas
-        normal = self.styles["Heading1"]
+        normal = self.styles["default"]
         ptext = "<b>Type: </b> 5C LCD Ori <br/> <b>Color: </b> Black <br/><b>Qty: </b> 1 pc"
         p = Paragraph(ptext, style=normal)
         p.wrapOn(self.c, self.width, self.height)
         p.drawOn(self.c, 30, 30)
+
         #the logo
-
-
-
-    	self.c.drawImage('thermal.png', 10*SC, 40*SC, 1082*0.25, 164*0.25)
+    	self.c.drawImage('thermal.png', 10*SC, 45*SC, 1082*0.25, 164*0.25)
         #barcode
-        self.c.drawImage('data.png', SC*75,SC*2, 205*0.50, 96*0.5) # test
+        self.c.drawImage('data1.png', SC*75, SC*5, 122*0.75, 122*0.75) # test
 
 
     #----------------------------------------------------------------------
 if __name__ == "__main__":
     t = Test()
     t.run()
+

@@ -20,7 +20,7 @@ reportlab.rl_config.warnOnMissingFontGlyphs = 0
 
 
 #----------------------------------------------------------------------
-def main():
+def createBarCodes():
 
  """
  Create barcode examples and embed in a PDF
@@ -28,7 +28,7 @@ def main():
  print os.sep
 
  c = canvas.Canvas("barcodes.pdf", pagesize=(150 * mm, 100 * mm))
- canvas.Canvas.drawString(c,10*mm, 70*mm, "Now we just have to read the Jason and we have a label basically")
+ canvas.Canvas.drawString(c,10*mm, 70*mm, "Now we just")
 
  #barcode128 = code128.Code128(barcode_value)
  # the multiwidth barcode appears to be broken
@@ -65,8 +65,4 @@ def main():
  c.save()
 
 if __name__ == "__main__":
-    main()
-
-
- c.save()
- #asdfasdfasdfasfas
+    createBarCodes()
