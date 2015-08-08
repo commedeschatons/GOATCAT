@@ -20,7 +20,11 @@ reportlab.rl_config.warnOnMissingFontGlyphs = 0
 
 
 #----------------------------------------------------------------------
+<<<<<<< HEAD
+def cat():
+=======
 def createBarCodes():
+>>>>>>> eae56979f0588ce088649e099155bfe422bb2233
 
  """
  Create barcode examples and embed in a PDF
@@ -65,4 +69,8 @@ def createBarCodes():
  c.save()
 
 if __name__ == "__main__":
+<<<<<<< HEAD
+    cat()
+=======
     createBarCodes()
+>>>>>>> eae56979f0588ce088649e099155bfe422bb2233
