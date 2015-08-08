@@ -42,6 +42,9 @@ def createBlankWayBill():
 	canvas.Canvas.drawString(wb, SC*135, SC*0, VERSION)
 	wb.setFont('Helvetica-Bold', 20)
 	#draw pdf417
+
+
+
 	wb.drawImage('data.png', SC*2.5,SC*2.5) # test
 	# draw linecode
 
