@@ -10,6 +10,7 @@ import elaphe
 import zlib
 
 
+serial = "15G3L18"
 VERSION = "bxcc0.11"
 WAYBILL_FILENAME = 'bxwaybill.pdf' #required for canvas objest
 SC = 1*mm
@@ -46,6 +47,18 @@ def stylesheet():
             splitLongWords=1,
         ),
     }
+    styles['small'] = ParagraphStyle(
+        'small',
+        parent=styles['default'],
+        leading=14,
+        fontName = 'Courier',
+        fontSize = 10,
+        borderWidth=1,
+        borderPadding=5,
+        borderRadius=2,
+        spaceBefore=10,
+        spaceAfter=10,
+    )
     return styles
 
 #get info from shipstation and make data.png
@@ -104,10 +117,14 @@ class Test(object):
         """
         self.c = canvas
         normal = self.styles["default"]
+        small = self.styles["small"]
         ptext = "<b>Type: </b> 5C LCD Ori <br/> <b>Color: </b> Black <br/><b>Qty: </b> 1 pc"
         p = Paragraph(ptext, style=normal)
         p.wrapOn(self.c, self.width, self.height)
         p.drawOn(self.c, 15, 35)
+        p = Paragraph(serial, style=small)
+        p.wrapOn(self.c, self.width, self.height)
+        p.drawOn(self.c, 15, 10)
 
         #the logo
     	self.c.drawImage('thermal.png', 10*SC, 47*SC, 1082*0.25, 164*0.25)
