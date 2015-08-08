@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7c8b348-f3b1-4507-a56b-2f49abd99314" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.idea/BX-goat-cat.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../barcodes.pdf" afterPath="$PROJECT_DIR$/../barcodes.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../data.png" afterPath="$PROJECT_DIR$/../data.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data.png" afterPath="$PROJECT_DIR$/data.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.pdf" afterPath="$PROJECT_DIR$/test.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/OtherLabel.iml" afterPath="$PROJECT_DIR$/.idea/OtherLabel.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../catcode.py" afterPath="$PROJECT_DIR$/../catcode.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/otherlabel.py" afterPath="$PROJECT_DIR$/otherlabel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ss.py" afterPath="$PROJECT_DIR$/../ss.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="OtherLabel.iws" />
@@ -42,8 +28,8 @@
       <file leaf-file-name="otherlabel.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/otherlabel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6852792">
-              <caret line="52" column="23" selection-start-line="52" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state vertical-scroll-proportion="1.5076143">
+              <caret line="109" column="31" selection-start-line="109" selection-start-column="31" selection-end-line="109" selection-end-column="31" />
               <folding>
                 <element signature="e#23#75#0" expanded="true" />
               </folding>
@@ -576,8 +562,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/otherlabel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6852792">
-          <caret line="52" column="23" selection-start-line="52" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        <state vertical-scroll-proportion="1.5076143">
+          <caret line="109" column="31" selection-start-line="109" selection-start-column="31" selection-end-line="109" selection-end-column="31" />
           <folding>
             <element signature="e#23#75#0" expanded="true" />
           </folding>

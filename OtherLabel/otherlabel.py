@@ -23,8 +23,8 @@ def stylesheet():
         'default': ParagraphStyle(
             'default',
             fontName='Helvetica',
-            fontSize=18,
-            leading=22,
+            fontSize=22,
+            leading=25,
             leftIndent=0,
             rightIndent=0,
             firstLineIndent=0,
@@ -107,10 +107,10 @@ class Test(object):
         ptext = "<b>Type: </b> 5C LCD Ori <br/> <b>Color: </b> Black <br/><b>Qty: </b> 1 pc"
         p = Paragraph(ptext, style=normal)
         p.wrapOn(self.c, self.width, self.height)
-        p.drawOn(self.c, 30, 30)
+        p.drawOn(self.c, 15, 35)
 
         #the logo
-    	self.c.drawImage('thermal.png', 10*SC, 45*SC, 1082*0.25, 164*0.25)
+    	self.c.drawImage('thermal.png', 10*SC, 47*SC, 1082*0.25, 164*0.25)
         #barcode
         self.c.drawImage('data1.png', SC*75, SC*5, 122*0.75, 122*0.75) # test
 
