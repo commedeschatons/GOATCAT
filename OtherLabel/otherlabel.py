@@ -9,15 +9,21 @@ import json
 import elaphe
 import zlib
 
+import string
+import random
 
-serial = "15G3L18"
-VERSION = "bxcc0.11"
-WAYBILL_FILENAME = 'bxwaybill.pdf' #required for canvas objest
+serial = ''.join(random.choice(string.ascii_uppercase + string.digits) for i in range(7))
+encode = "15G3L18"
+#VERSION = "bxcc0.11"
+#WAYBILL_FILENAME = 'bxwaybill.pdf' #required for canvas objest
 SC = 1*mm
 WAYBILL_H = 31.75*2 * SC
 WAYBILL_W = 57.15*2 * SC
 
 styles = getSampleStyleSheet()
+
+color = raw_input("Enter the screen color ")
+#color = "White"
 
 def stylesheet():
     styles= {
@@ -115,16 +121,24 @@ class Test(object):
         """
         Create the document
         """
+
         self.c = canvas
+        if color == "White":
+             self.c.rect(30*SC, 21*SC, 20*SC, 8 *SC, fill=1)
         normal = self.styles["default"]
         small = self.styles["small"]
-        ptext = "<b>Type: </b> 5C LCD Ori <br/> <b>Color: </b> Black <br/><b>Qty: </b> 1 pc"
+        ptext = "<b>Type: </b> 5C LCD Ori <br/> <b>Color: </b><a color=%s> %s</a> <br/><b>Qty: </b> 1 pc" %(color, color)
         p = Paragraph(ptext, style=normal)
         p.wrapOn(self.c, self.width, self.height)
         p.drawOn(self.c, 15, 35)
-        p = Paragraph(serial, style=small)
+        p = Paragraph(encode, style=small)
         p.wrapOn(self.c, self.width, self.height)
         p.drawOn(self.c, 15, 10)
+        p = Paragraph(serial, style=small)
+        p.wrapOn(self.c, self.width, self.height)
+        p.drawOn(self.c, 245, 3)
+
+
 
         #the logo
     	self.c.drawImage('thermal.png', 10*SC, 47*SC, 1082*0.25, 164*0.25)
