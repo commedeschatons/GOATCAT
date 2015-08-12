@@ -12,17 +12,18 @@ import zlib
 import string
 import random
 
-serial = ''.join(random.choice(string.ascii_uppercase + string.digits) for i in range(7))
-encode = "15G3L18"
+encode = "15G10L19"
 #VERSION = "bxcc0.11"
 #WAYBILL_FILENAME = 'bxwaybill.pdf' #required for canvas objest
+DATA = "SK: 5c lcd ori RC: 8/10/15 IV: 19 CR: dhl/3260516910 "
 SC = 1*mm
 WAYBILL_H = 31.75*2 * SC
 WAYBILL_W = 57.15*2 * SC
 
 styles = getSampleStyleSheet()
-
+serial = "a"
 color = raw_input("Enter the screen color ")
+labels = input("Enter number of labels")
 #color = "White"
 
 def stylesheet():
@@ -56,9 +57,9 @@ def stylesheet():
     styles['small'] = ParagraphStyle(
         'small',
         parent=styles['default'],
-        leading=14,
-        fontName = 'Courier',
-        fontSize = 10,
+        leading=16,
+        fontName = 'Helvetica',
+        fontSize = 12,
         borderWidth=1,
         borderPadding=5,
         borderRadius=2,
@@ -81,10 +82,7 @@ for order in orderqueue['orders']:
     useful+=(str(order['billTo']))
 
 
-print useful
-data = elaphe.barcode('aztec', zlib.compress(useful,9), options=dict(columns=8, rows=4))
-print type(data)
-data.save("data1.png", "PNG")
+
 
 ########################################################################
 class Test(object):
@@ -95,7 +93,8 @@ class Test(object):
         """Constructor"""
         self.width, self.height = (WAYBILL_W, WAYBILL_H)
         self.styles = stylesheet()
-
+        data = elaphe.barcode('aztec', zlib.compress(str(DATA + 'sn: ' + serial),1), options=dict(columns=8, rows=4))
+        data.save("data1.png", "PNG")
     #----------------------------------------------------------------------
     def coord(self, x, y, unit=1):
         """
@@ -110,7 +109,7 @@ class Test(object):
         """
         Run the report
         """
-        self.doc = SimpleDocTemplate("test.pdf", pagesize = (WAYBILL_W, WAYBILL_H))
+        self.doc = SimpleDocTemplate('generated/' + serial + ".pdf", pagesize = (WAYBILL_W, WAYBILL_H))
         self.story = [Spacer(0, 0*inch)]
 
         self.doc.build(self.story, onFirstPage=self.createDocument)
@@ -124,30 +123,34 @@ class Test(object):
 
         self.c = canvas
         if color == "White":
-             self.c.rect(30*SC, 21*SC, 20*SC, 8 *SC, fill=1)
+             self.c.rect(30*SC, 24.5*SC, 20*SC, 8 *SC, fill=1)
         normal = self.styles["default"]
         small = self.styles["small"]
         ptext = "<b>Type: </b> 5C LCD Ori <br/> <b>Color: </b><a color=%s> %s</a> <br/><b>Qty: </b> 1 pc" %(color, color)
         p = Paragraph(ptext, style=normal)
         p.wrapOn(self.c, self.width, self.height)
-        p.drawOn(self.c, 15, 35)
+        p.drawOn(self.c, 15, 45)
         p = Paragraph(encode, style=small)
         p.wrapOn(self.c, self.width, self.height)
-        p.drawOn(self.c, 15, 10)
+        p.drawOn(self.c, 15, 7)
         p = Paragraph(serial, style=small)
         p.wrapOn(self.c, self.width, self.height)
-        p.drawOn(self.c, 245, 3)
+        p.drawOn(self.c, 233, 7)
 
 
 
         #the logo
     	self.c.drawImage('thermal.png', 10*SC, 47*SC, 1082*0.25, 164*0.25)
         #barcode
-        self.c.drawImage('data1.png', SC*75, SC*5, 122*0.75, 122*0.75) # test
+        self.c.drawImage('data1.png', SC*78, SC*8, 122*0.75, 122*0.75) # test
 
 
     #----------------------------------------------------------------------
 if __name__ == "__main__":
-    t = Test()
-    t.run()
+
+    for xk in range(0, labels):
+        serial = ''.join(random.choice(string.ascii_uppercase + string.digits) for i in range(7))
+        serial = 'BX' + serial
+        t = Test()
+        t.run()
 
