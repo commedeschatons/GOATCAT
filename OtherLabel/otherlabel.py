@@ -12,16 +12,12 @@ import zlib
 import string
 import random
 
-<<<<<<< HEAD
-encode = "15G10L19"
-=======
 import datecode as dc
 
 serial = ''.join(random.choice(string.ascii_uppercase + string.digits) for i in range(7))
 
 #argument for getEncoded is the invoice_number
 encode = dc.getEncoded(18)
->>>>>>> 2b9ea0b44fcb0f01e6d2d10141d5dfd0e62ffe83
 #VERSION = "bxcc0.11"
 #WAYBILL_FILENAME = 'bxwaybill.pdf' #required for canvas objest
 DATA = "SK: 5c lcd ori RC: 8/10/15 IV: 19 CR: dhl/3260516910 "
@@ -31,9 +27,31 @@ WAYBILL_W = 57.15*2 * SC
 
 styles = getSampleStyleSheet()
 serial = "a"
-color = raw_input("Enter the screen color ")
+code = raw_input("Enter the product code in the form two letter type and one letter color")
+
+##Assignment based on entry code
+#code has the format Type+color
+
+if code[-1:] == "b":
+    color = "Black"
+else:
+    color = "White"
+
+def mapType(type):
+    return{
+            '5c' : "5C LCD Ori",
+            '5s' : "5S LCD Ori",
+            '6' : "6 LCD Ori",
+            '6+' : "6+ LCD Ori",
+            '5' : "5 LCD Ori",
+    }[type]
+
+
+type = (mapType(code[:-1]))
+
+##end assignment
+
 labels = input("Enter number of labels")
-#color = "White"
 
 def stylesheet():
     styles= {
@@ -135,7 +153,7 @@ class Test(object):
              self.c.rect(30*SC, 24.5*SC, 20*SC, 8 *SC, fill=1)
         normal = self.styles["default"]
         small = self.styles["small"]
-        ptext = "<b>Type: </b> 5C LCD Ori <br/> <b>Color: </b><a color=%s> %s</a> <br/><b>Qty: </b> 1 pc" %(color, color)
+        ptext = "<b>Type: </b> %s <br/> <b>Color: </b><a color=%s> %s</a> <br/><b>Qty: </b> 1 pc" %(type, color, color)
         p = Paragraph(ptext, style=normal)
         p.wrapOn(self.c, self.width, self.height)
         p.drawOn(self.c, 15, 45)
