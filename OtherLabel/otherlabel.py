@@ -15,7 +15,9 @@ import random
 import datecode as dc
 
 serial = ''.join(random.choice(string.ascii_uppercase + string.digits) for i in range(7))
-encode = dc.getEncoded()
+
+#argument for getEncoded is the invoice_number
+encode = dc.getEncoded(18)
 #VERSION = "bxcc0.11"
 #WAYBILL_FILENAME = 'bxwaybill.pdf' #required for canvas objest
 SC = 1*mm

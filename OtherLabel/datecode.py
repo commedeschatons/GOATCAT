@@ -21,7 +21,7 @@ def monthToNum(date):
 
 
 
-def getEncoded():
+def getEncoded(inv_num):
     today = datetime.date.today()
     today = str(today)
     year = today[2:4]
@@ -29,10 +29,7 @@ def getEncoded():
     mo = monthToNum(mo)
     day = today[8:10]
     ##supplier and invoice number
-    supplier = "L"
-    invoice_number = "18"
+    supplier = ""
+    invoice_number = str(inv_num)
     code = year+mo+day+supplier+invoice_number
     return code
-
-
-print(getEncoded())
