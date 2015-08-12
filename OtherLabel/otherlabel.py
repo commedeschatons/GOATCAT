@@ -12,8 +12,10 @@ import zlib
 import string
 import random
 
+import datecode as dc
+
 serial = ''.join(random.choice(string.ascii_uppercase + string.digits) for i in range(7))
-encode = "15G3L18"
+encode = dc.getEncoded()
 #VERSION = "bxcc0.11"
 #WAYBILL_FILENAME = 'bxwaybill.pdf' #required for canvas objest
 SC = 1*mm
