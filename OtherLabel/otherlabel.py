@@ -12,7 +12,16 @@ import zlib
 import string
 import random
 
+<<<<<<< HEAD
 encode = "15G10L19"
+=======
+import datecode as dc
+
+serial = ''.join(random.choice(string.ascii_uppercase + string.digits) for i in range(7))
+
+#argument for getEncoded is the invoice_number
+encode = dc.getEncoded(18)
+>>>>>>> 2b9ea0b44fcb0f01e6d2d10141d5dfd0e62ffe83
 #VERSION = "bxcc0.11"
 #WAYBILL_FILENAME = 'bxwaybill.pdf' #required for canvas objest
 DATA = "SK: 5c lcd ori RC: 8/10/15 IV: 19 CR: dhl/3260516910 "
