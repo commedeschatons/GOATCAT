@@ -39,15 +39,22 @@ else:
 
 def mapType(type):
     return{
-            '5c' : "5C LCD Ori",
-            '5s' : "5S LCD Ori",
-            '6' : "6 LCD Ori",
-            '6+' : "6+ LCD Ori",
-            '5' : "5 LCD Ori",
+            '5c' : ["5C LCD Ori", "ap"],
+            '5s' : ["5S LCD Ori", "ap"],
+            '6' : ["6 LCD Ori", "ap"],
+            '6+' : ["6+ LCD Ori", "ap"],
+            '5' : ["5 LCD Ori", "ap"],
+            's3' : ["S3 Asy Ori", "sam"],
+            's4' : ["S4 Asy Ori", "sam"],
+            's5' : ["S5 Asy Ori", "sam"],
+            's6' : ["S6 Asy Ori", "sam"],
     }[type]
 
 
-type = (mapType(code[:-1]))
+type = (mapType(code[:-1])[0])
+brand = (mapType(code[:-1])[1])
+
+
 
 ##end assignment
 
@@ -170,6 +177,10 @@ class Test(object):
     	self.c.drawImage('thermal.png', 10*SC, 47*SC, 1082*0.25, 164*0.25)
         #barcode
         self.c.drawImage('data1.png', SC*78, SC*8, 122*0.75, 122*0.75) # test
+        if brand == "ap":
+            self.c.drawImage('apple.png', 93*mm, 41*mm, 225 * .06, 225*.06)
+        if brand == "sam":
+            self.c.drawImage('samsungs.png', 93 * mm, 41*mm, 189*.06, 267*.06)
 
 
     #----------------------------------------------------------------------
